@@ -4,8 +4,10 @@ const deleteContactById = require('./deleteContactById')
 const addNewContact = require('./addNewContact')
 const contactUpdate = require('./contactUpdate')
 const updateStatus = require('./updateStatus')
+const auth = require('./auth')
 
 module.exports = {
+  auth,
   getAllContacts,
   getContById,
   deleteContactById,
