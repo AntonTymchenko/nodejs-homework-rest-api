@@ -17,11 +17,16 @@ const login = async (req, res) => {
     _id: user.id,
   }
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '1h' })
+  user.token = token
+  await user.save()
   res.json({
     status: 'success',
     code: 200,
     data: {
       token,
+      user: {
+        email: user.email,
+      },
     },
   })
 }
