@@ -8,7 +8,7 @@ const avatarsDir = path.join(__dirname, '../../public/avatars')
 
 const register = async (req, res) => {
   const { email, password } = req.body
-  const avatarURL = gravatar.url(email)
+  const avatarURL = gravatar.url(email, { protocol: 'http' })
   const user = await User.findOne({ email })
   if (user) {
     throw new Conflict(`User with email=${email} already exist`)
