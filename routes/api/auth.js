@@ -29,5 +29,5 @@ router.patch(
   uploadAvatar.single('avatarURL'),
   controllerWrapper(ctrl.updateAvatar)
 )
-
+router.get('/verify/:verificationToken', controllerWrapper(ctrl.verify))
 module.exports = router
