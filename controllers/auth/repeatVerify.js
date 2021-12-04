@@ -5,7 +5,7 @@ const { User } = require('../../model')
 const repeatVerify = async (req, res) => {
   const { email } = req.body
 
-  const currentUser = await User.findOne({email})
+  const currentUser = await User.findOne({ email })
   if (!currentUser) {
     throw new NotFound('Not Found')
   }
