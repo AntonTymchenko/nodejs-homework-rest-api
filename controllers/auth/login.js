@@ -1,4 +1,4 @@
-const { BadRequest } = require('http-errors')
+const { BadRequest, Unauthorized } = require('http-errors')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
@@ -9,6 +9,9 @@ const { SECRET_KEY } = process.env
 const login = async (req, res) => {
   const { email, password } = req.body
   const user = await User.findOne({ email })
+  if (user.verify) {
+    throw new Unauthorized('Sorry You are not approve email')
+  }
 
   if (!user || !user.comparePassword(password)) {
     throw new BadRequest('Wrong login or password')
